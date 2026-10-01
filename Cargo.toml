@@ -1,0 +1,15 @@
+[package]
+name = "rust-node-modules-cleanup"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.85"
+description = "Find and safely bulk remove node_modules directories"
+license = "MIT"
+repository = "https://github.com/mdnbras/rust-node-modules-cleanup"
+readme = "README.md"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
+
