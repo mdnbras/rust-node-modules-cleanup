@@ -218,6 +218,19 @@ fn refuses_replaced_directory_and_changed_ancestor() {
 
 #[cfg(unix)]
 #[test]
+fn parses_non_utf8_paths_without_loss() {
+    use std::os::unix::ffi::OsStringExt;
+    let path = OsString::from_vec(vec![b'p', 0xff]);
+    let Command::Run(options) = cli::parse([path.clone()]).unwrap() else {
+        panic!()
+    };
+    assert_eq!(options.path, PathBuf::from(path));
+}
+
+// The macOS runner's filesystem rejects invalid UTF-8 filenames (EILSEQ).
+// Test actual byte-oriented filenames on Linux and the parser on all Unix hosts.
+#[cfg(target_os = "linux")]
+#[test]
 fn handles_non_utf8_paths() {
     use std::os::unix::ffi::OsStringExt;
     let fixture = Fixture::new();
