@@ -81,7 +81,33 @@ cargo run -- ./algum-diretorio --dry
 
 Binário local: `target/release/rust-node-modules-cleanup` (sufixo `.exe` no Windows).
 
-O GitHub Actions executa formatação, Clippy, testes e build em Linux, Windows e macOS, além de verificar o Rust mínimo no Linux. Os executáveis produzidos ficam nos artifacts do workflow; não são releases publicados.
+O GitHub Actions executa formatação, Clippy, testes e build em Linux, Windows e macOS, além de verificar o Rust mínimo no Linux. Os executáveis de CI ficam nos artifacts do workflow. A publicação dos pacotes é feita pelo workflow `Release binaries`, descrito abaixo.
+
+
+## Executáveis nas releases
+
+Ao **publicar uma release** (incluindo pré-release), o workflow `.github/workflows/release.yml` testa e compila o código da tag e anexa:
+
+| Plataforma | Arquitetura / target | Pacote |
+| --- | --- | --- |
+| Linux | x86_64-unknown-linux-gnu | `.tar.gz` |
+| macOS Intel | x86_64-apple-darwin | `.tar.gz` |
+| macOS Apple Silicon | aarch64-apple-darwin | `.tar.gz` |
+| Windows | x86_64-pc-windows-msvc | `.zip` |
+
+Os nomes seguem `rust-node-modules-cleanup-<target>` e os pacotes incluem executável, README e licenças. O arquivo `SHA256SUMS` contém os hashes dos quatro pacotes. Linux é compilado no Ubuntu 22.04 (glibc 2.35 ou compatível); macOS usa runners macOS 15. Os binários não recebem assinatura de distribuição ou notarização.
+
+Para publicar:
+
+1. Atualize a versão em `Cargo.toml` e `Cargo.lock` e envie o commit para `master`.
+2. Abra **Releases → Draft a new release**, crie uma tag como `v0.1.0` no commit que contém este workflow e clique em **Publish release**.
+3. Acompanhe **Actions → Release binaries**. Após os quatro builds passarem, os pacotes e checksums aparecerão em **Assets** da release.
+
+Salvar somente um rascunho ou criar somente uma tag não dispara a publicação. O workflow usa o `GITHUB_TOKEN` automático, com `contents: write` apenas no job de upload; não exige um secret pessoal.
+
+Também é possível usar **Run workflow** para validar os builds e baixar artifacts sem criar nem alterar releases. Alterações no workflow ou no script de empacotamento disparam essa mesma validação automaticamente. Em uma reexecução de release, assets de mesmo nome são substituídos (`--clobber`). O upload pressupõe que a release permita adicionar/alterar assets; releases imutáveis exigem anexar arquivos antes da publicação.
+
+Para instalar, baixe o pacote do seu sistema na página de releases, extraia e coloque o executável em uma pasta do `PATH`. Não é necessário instalar Rust para usar esses binários.
 
 ## Estrutura
 
