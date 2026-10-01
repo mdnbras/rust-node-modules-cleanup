@@ -111,6 +111,25 @@ Para instalar, baixe o pacote do seu sistema na página de releases, extraia e c
 
 ## Benchmark comparativo
 
+![Gráfico comparativo de Rust e JavaScript: medianas de busca, tamanho, exclusão e processo completo](docs/assets/benchmark-rust-vs-javascript.png)
+
+Medianas de **7 execuções** por implementação, após 1 aquecimento, medidas em Linux x64 em 01/10/2026. Tempos em milissegundos; **menor é melhor**.
+
+| Cenário | Etapa | Rust (ms) | JavaScript (ms) | Razão JS/Rust |
+| --- | --- | ---: | ---: | ---: |
+| 1.280 arquivos | Busca + tamanho | 1,31 | 32,04 | 24,55× |
+| 1.280 arquivos | Exclusão | 2,42 | 32,71 | 13,51× |
+| 1.280 arquivos | Núcleo total | 4,20 | 64,21 | 15,28× |
+| 1.280 arquivos | Processo completo (adaptador) | 5,43 | 123,32 | 22,71× |
+| 21.600 arquivos | Busca + tamanho | 13,22 | 429,98 | 32,52× |
+| 21.600 arquivos | Exclusão | 39,27 | 351,16 | 8,94× |
+| 21.600 arquivos | Núcleo total | 53,30 | 781,14 | 14,66× |
+| 21.600 arquivos | Processo completo (adaptador) | 55,08 | 847,36 | 15,38× |
+
+No cenário de 21.600 arquivos, a razão das medianas do núcleo total foi **14,66× a favor de Rust**. O núcleo total é medido por execução; sua mediana não precisa ser a soma das medianas das etapas.
+
+**Condições:** carga sintética, arquivos recém-criados em filesystem overlay e cache aquecido, Node.js 24.19.0 e Rust 1.99.0. São comparadas funções reais com a concorrência padrão de cada implementação; o processo completo inclui os adaptadores, não a interface dos CLIs. Os resultados são específicos deste ambiente. O gráfico usa escalas independentes entre cenários; a dispersão e as amostras estão no relatório abaixo.
+
 O benchmark compara as funções reais do projeto JavaScript original com a implementação Rust, usando fixtures equivalentes, aquecimento, ordem alternada e múltiplas execuções. Mede busca + tamanho, exclusão e tempo total; não inclui os atrasos artificiais do `--dry` original.
 
 - [Como executar e metodologia](benchmarks/README.md)
