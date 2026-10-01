@@ -62,7 +62,7 @@ A confirmação aceita `y`, `yes`, `s` e `sim`, sem diferenciar maiúsculas; man
 - Pare instalações, builds e processos que alterem a árvore durante a operação. As verificações reduzem riscos, mas não constituem uma sandbox contra alterações concorrentes maliciosas; existe intervalo entre verificação e remoção.
 - Erros de leitura geram avisos. Uma busca parcial pode continuar com as pastas encontradas, mas termina com código 1. Falhas de exclusão não impedem as demais tentativas e não entram no contador de pastas removidas.
 - O tamanho é a soma dos bytes lógicos dos arquivos regulares, não uma medida exata de espaço físico liberado: hard links, compressão, arquivos esparsos e alterações concorrentes podem mudar o resultado.
-- Não há benchmark comparativo: a escolha de Rust não implica uma promessa medida de desempenho.
+- Há um [benchmark reproduzível](benchmarks/README.md) com amostras e metodologia. Os resultados são específicos do ambiente e da carga sintética; não representam uma garantia universal de desempenho.
 
 | Código de saída | Significado |
 | --- | --- |
@@ -108,6 +108,15 @@ Salvar somente um rascunho ou criar somente uma tag não dispara a publicação.
 Também é possível usar **Run workflow** para validar os builds e baixar artifacts sem criar nem alterar releases. Alterações no workflow ou no script de empacotamento disparam essa mesma validação automaticamente. Em uma reexecução de release, assets de mesmo nome são substituídos (`--clobber`). O upload pressupõe que a release permita adicionar/alterar assets; releases imutáveis exigem anexar arquivos antes da publicação.
 
 Para instalar, baixe o pacote do seu sistema na página de releases, extraia e coloque o executável em uma pasta do `PATH`. Não é necessário instalar Rust para usar esses binários.
+
+## Benchmark comparativo
+
+O benchmark compara as funções reais do projeto JavaScript original com a implementação Rust, usando fixtures equivalentes, aquecimento, ordem alternada e múltiplas execuções. Mede busca + tamanho, exclusão e tempo total; não inclui os atrasos artificiais do `--dry` original.
+
+- [Como executar e metodologia](benchmarks/README.md)
+- [Resultado Linux de 01/10/2026](docs/benchmarks/2026-10-01-linux.md)
+- [Amostras brutas em JSON](docs/benchmarks/2026-10-01-linux.json)
+- GitHub Actions: **Benchmark Rust vs JavaScript → Run workflow**.
 
 ## Estrutura
 

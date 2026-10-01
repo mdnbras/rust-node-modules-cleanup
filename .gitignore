@@ -1,2 +1,6 @@
 /target/
 /dist/
+/benchmarks/node_modules/
+/benchmarks/.cache/
+/benchmarks/results/
+__pycache__/

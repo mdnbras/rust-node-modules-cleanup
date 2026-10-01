@@ -1,0 +1,67 @@
+name: Benchmark Rust vs JavaScript
+
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: Fixture size
+        type: choice
+        options: [small, medium, large, all]
+        default: medium
+      runs:
+        description: Measured runs per implementation (at least 2)
+        type: string
+        default: '7'
+      warmups:
+        description: Warmup runs per implementation
+        type: string
+        default: '1'
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: sebastianekstrom/node-modules-cleanup
+          ref: 74e099ee05a57c683d9e7a1887b806f9f7a08d86
+          path: benchmarks/.cache/upstream
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: benchmarks/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: rustup toolchain install stable --profile minimal
+      - run: npm ci --prefix benchmarks --ignore-scripts --no-audit --no-fund
+      - run: node benchmarks/build.mjs
+      - run: cargo +stable build --release --locked --example benchmark
+      - name: Run paired benchmark
+        env:
+          PROFILE: ${{ inputs.profile }}
+          RUNS: ${{ inputs.runs }}
+          WARMUPS: ${{ inputs.warmups }}
+        run: |
+          if [ "$PROFILE" = "all" ]; then
+            python benchmarks/run.py --profiles small medium large --runs "$RUNS" --warmups "$WARMUPS"
+          else
+            python benchmarks/run.py --profiles "$PROFILE" --runs "$RUNS" --warmups "$WARMUPS"
+          fi
+      - name: Add results to job summary
+        run: cat benchmarks/results/latest.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: benchmark-results
+          path: benchmarks/results/
+          if-no-files-found: warn

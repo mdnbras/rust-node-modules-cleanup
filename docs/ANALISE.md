@@ -29,7 +29,7 @@ Referência: [sebastianekstrom/node-modules-cleanup](https://github.com/sebastia
 
 O parser trabalha com `OsString`, permitindo caminhos não UTF-8 no Unix, opções antes/depois do caminho e `--`. Argumentos desconhecidos, múltiplos caminhos e ausência de caminho retornam erro.
 
-A descoberta é sequencial; cálculo e remoção usam threads com escopo em lotes limitados. Isso evita criar uma thread para cada arquivo e mantém uma implementação pequena, sem runtime assíncrono. Não foi realizada comparação de desempenho com o original.
+A descoberta é sequencial; cálculo e remoção usam threads com escopo em lotes limitados. Isso evita criar uma thread para cada arquivo e mantém uma implementação pequena, sem runtime assíncrono. A comparação de desempenho está disponível em [benchmarks/README.md](../benchmarks/README.md), com resultados e limites documentados.
 
 O scanner inclui a própria raiz quando seu nome é `node_modules`. Links e reparse points são ignorados. O tamanho usa apenas arquivos regulares e não segue links. Caminhos na lista de candidatos são escapados para evitar interpretação de caracteres de controle pelo terminal.
 

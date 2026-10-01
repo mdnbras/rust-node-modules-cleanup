@@ -1,0 +1,11 @@
+{
+  "name": "rust-node-modules-cleanup-benchmark",
+  "private": true,
+  "type": "module",
+  "scripts": { "prepare:js": "node build.mjs" },
+  "devDependencies": {
+    "chalk": "5.3.0",
+    "cli-table": "0.3.11",
+    "esbuild": "0.25.10"
+  }
+}

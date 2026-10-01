@@ -1,0 +1,520 @@
+{
+  "created_at": "2026-10-01T14:34:53.269885+00:00",
+  "environment": {
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "cpus": 9,
+    "node": "v24.19.0",
+    "rustc": "rustc 1.99.0 (b940084d7 2026-09-28)",
+    "python": "3.12.14",
+    "uv_threadpool_size": "default (4)",
+    "storage": "Filesystem     Type    1K-blocks    Used Available Use% Mounted on\noverlay        overlay  32978704 1363128  29921472   5% /"
+  },
+  "upstream": {
+    "repository": "sebastianekstrom/node-modules-cleanup",
+    "commit": "74e099ee05a57c683d9e7a1887b806f9f7a08d86",
+    "bundler": "esbuild 0.25.10"
+  },
+  "rust_source_sha256": "a6ed9ac294c8d34b784bd43759d3048fbbc54b55221cf796bef1c08a6db1c34f",
+  "adapter_sha256": {
+    "rust": "c8a287b34d41ffd341450373794b92d3b9aa516a0f231d623bd2b6ba037ca641",
+    "javascript": "bdc619881b92205f696695f2893120d6506a97a4941406600e5082d480b9f380"
+  },
+  "settings": {
+    "runs": 7,
+    "warmups": 1,
+    "seed": 42,
+    "timeout": 300,
+    "work_dir": "/tmp"
+  },
+  "profiles": {
+    "small": {
+      "fixture": {
+        "projects": 5,
+        "packages": 8,
+        "files": 16,
+        "levels": 2,
+        "file_bytes": 1024
+      },
+      "file_count": 1280,
+      "samples": {
+        "rust": [
+          {
+            "folders": 5,
+            "bytes": 1310720,
+            "scan_ms": 1.2820010000000002,
+            "delete_ms": 3.701873,
+            "core_ms": 4.983874,
+            "process_ms": 6.105633,
+            "iteration": 1,
+            "position": 1
+          },
+          {
+            "folders": 5,
+            "bytes": 1310720,
+            "scan_ms": 2.877719,
+            "delete_ms": 3.7109859999999997,
+            "core_ms": 6.588705,
+            "process_ms": 7.783246,
+            "iteration": 2,
+            "position": 0
+          },
+          {
+            "folders": 5,
+            "bytes": 1310720,
+            "scan_ms": 1.15266,
+            "delete_ms": 3.048875,
+            "core_ms": 4.201535,
+            "process_ms": 5.430101,
+            "iteration": 3,
+            "position": 1
+          },
+          {
+            "folders": 5,
+            "bytes": 1310720,
+            "scan_ms": 0.9843409999999999,
+            "delete_ms": 2.196309,
+            "core_ms": 3.18065,
+            "process_ms": 4.406428,
+            "iteration": 4,
+            "position": 0
+          },
+          {
+            "folders": 5,
+            "bytes": 1310720,
+            "scan_ms": 2.350795,
+            "delete_ms": 2.421901,
+            "core_ms": 4.772696,
+            "process_ms": 6.21276,
+            "iteration": 5,
+            "position": 1
+          },
+          {
+            "folders": 5,
+            "bytes": 1310720,
+            "scan_ms": 1.305294,
+            "delete_ms": 2.101889,
+            "core_ms": 3.407183,
+            "process_ms": 4.539283,
+            "iteration": 6,
+            "position": 0
+          },
+          {
+            "folders": 5,
+            "bytes": 1310720,
+            "scan_ms": 1.4570539999999998,
+            "delete_ms": 2.3909249999999997,
+            "core_ms": 3.847979,
+            "process_ms": 5.157064,
+            "iteration": 7,
+            "position": 1
+          }
+        ],
+        "javascript": [
+          {
+            "folders": 5,
+            "bytes": 1310720,
+            "scan_ms": 30.22594099999999,
+            "delete_ms": 37.25111000000001,
+            "core_ms": 67.477051,
+            "process_ms": 123.323404,
+            "iteration": 1,
+            "position": 0
+          },
+          {
+            "folders": 5,
+            "bytes": 1310720,
+            "scan_ms": 43.200801999999996,
+            "delete_ms": 35.445352000000014,
+            "core_ms": 78.64615400000001,
+            "process_ms": 147.259756,
+            "iteration": 2,
+            "position": 1
+          },
+          {
+            "folders": 5,
+            "bytes": 1310720,
+            "scan_ms": 34.562575,
+            "delete_ms": 32.708477,
+            "core_ms": 67.271052,
+            "process_ms": 134.466242,
+            "iteration": 3,
+            "position": 0
+          },
+          {
+            "folders": 5,
+            "bytes": 1310720,
+            "scan_ms": 30.463581999999995,
+            "delete_ms": 33.48038000000001,
+            "core_ms": 63.943962000000006,
+            "process_ms": 120.48271,
+            "iteration": 4,
+            "position": 1
+          },
+          {
+            "folders": 5,
+            "bytes": 1310720,
+            "scan_ms": 32.66897900000001,
+            "delete_ms": 31.53743,
+            "core_ms": 64.20640900000001,
+            "process_ms": 130.393708,
+            "iteration": 5,
+            "position": 0
+          },
+          {
+            "folders": 5,
+            "bytes": 1310720,
+            "scan_ms": 32.041022999999996,
+            "delete_ms": 27.328454000000008,
+            "core_ms": 59.369477,
+            "process_ms": 116.68865,
+            "iteration": 6,
+            "position": 1
+          },
+          {
+            "folders": 5,
+            "bytes": 1310720,
+            "scan_ms": 27.861919999999998,
+            "delete_ms": 21.90624000000001,
+            "core_ms": 49.76816000000001,
+            "process_ms": 117.842873,
+            "iteration": 7,
+            "position": 0
+          }
+        ]
+      },
+      "warmups": {
+        "rust": [
+          {
+            "folders": 5,
+            "bytes": 1310720,
+            "scan_ms": 1.19326,
+            "delete_ms": 7.629709,
+            "core_ms": 8.822969,
+            "process_ms": 10.320517,
+            "iteration": 0,
+            "position": 0
+          }
+        ],
+        "javascript": [
+          {
+            "folders": 5,
+            "bytes": 1310720,
+            "scan_ms": 31.071091999999993,
+            "delete_ms": 30.89788700000001,
+            "core_ms": 61.968979000000004,
+            "process_ms": 134.974141,
+            "iteration": 0,
+            "position": 1
+          }
+        ]
+      },
+      "summary": {
+        "rust": {
+          "scan_ms": {
+            "median": 1.305294,
+            "mean": 1.6299805714285713,
+            "stdev": 0.704453069359215,
+            "min": 0.9843409999999999,
+            "max": 2.877719
+          },
+          "delete_ms": {
+            "median": 2.421901,
+            "mean": 2.7961082857142854,
+            "stdev": 0.6912797491003465,
+            "min": 2.101889,
+            "max": 3.7109859999999997
+          },
+          "core_ms": {
+            "median": 4.201535,
+            "mean": 4.426088857142857,
+            "stdev": 1.1606098894333428,
+            "min": 3.18065,
+            "max": 6.588705
+          },
+          "process_ms": {
+            "median": 5.430101,
+            "mean": 5.6620735714285715,
+            "stdev": 1.1651554538977273,
+            "min": 4.406428,
+            "max": 7.783246
+          }
+        },
+        "javascript": {
+          "scan_ms": {
+            "median": 32.041022999999996,
+            "mean": 33.003546,
+            "stdev": 4.967491176583206,
+            "min": 27.861919999999998,
+            "max": 43.200801999999996
+          },
+          "delete_ms": {
+            "median": 32.708477,
+            "mean": 31.37963471428572,
+            "stdev": 5.218004145879812,
+            "min": 21.90624000000001,
+            "max": 37.25111000000001
+          },
+          "core_ms": {
+            "median": 64.20640900000001,
+            "mean": 64.38318071428571,
+            "stdev": 8.758847503983914,
+            "min": 49.76816000000001,
+            "max": 78.64615400000001
+          },
+          "process_ms": {
+            "median": 123.323404,
+            "mean": 127.20819185714285,
+            "stdev": 10.981694394412651,
+            "min": 116.68865,
+            "max": 147.259756
+          }
+        }
+      }
+    },
+    "medium": {
+      "fixture": {
+        "projects": 25,
+        "packages": 12,
+        "files": 24,
+        "levels": 3,
+        "file_bytes": 1024
+      },
+      "file_count": 21600,
+      "samples": {
+        "rust": [
+          {
+            "folders": 25,
+            "bytes": 22118400,
+            "scan_ms": 12.909855,
+            "delete_ms": 36.354026999999995,
+            "core_ms": 49.263882,
+            "process_ms": 50.542102,
+            "iteration": 1,
+            "position": 1
+          },
+          {
+            "folders": 25,
+            "bytes": 22118400,
+            "scan_ms": 13.610698,
+            "delete_ms": 33.876819000000005,
+            "core_ms": 47.487517,
+            "process_ms": 48.883455,
+            "iteration": 2,
+            "position": 0
+          },
+          {
+            "folders": 25,
+            "bytes": 22118400,
+            "scan_ms": 13.222026,
+            "delete_ms": 46.144257,
+            "core_ms": 59.366282999999996,
+            "process_ms": 61.967518,
+            "iteration": 3,
+            "position": 1
+          },
+          {
+            "folders": 25,
+            "bytes": 22118400,
+            "scan_ms": 13.175366,
+            "delete_ms": 40.997980000000005,
+            "core_ms": 54.173345999999995,
+            "process_ms": 55.595973,
+            "iteration": 4,
+            "position": 0
+          },
+          {
+            "folders": 25,
+            "bytes": 22118400,
+            "scan_ms": 12.905702999999999,
+            "delete_ms": 37.416261,
+            "core_ms": 50.321963999999994,
+            "process_ms": 51.762918,
+            "iteration": 5,
+            "position": 1
+          },
+          {
+            "folders": 25,
+            "bytes": 22118400,
+            "scan_ms": 14.032459000000001,
+            "delete_ms": 39.268046,
+            "core_ms": 53.300505,
+            "process_ms": 55.084005,
+            "iteration": 6,
+            "position": 0
+          },
+          {
+            "folders": 25,
+            "bytes": 22118400,
+            "scan_ms": 13.528104,
+            "delete_ms": 67.793489,
+            "core_ms": 81.321593,
+            "process_ms": 82.777544,
+            "iteration": 7,
+            "position": 1
+          }
+        ],
+        "javascript": [
+          {
+            "folders": 25,
+            "bytes": 22118400,
+            "scan_ms": 453.000459,
+            "delete_ms": 415.23912600000006,
+            "core_ms": 868.239585,
+            "process_ms": 940.16555,
+            "iteration": 1,
+            "position": 0
+          },
+          {
+            "folders": 25,
+            "bytes": 22118400,
+            "scan_ms": 415.091197,
+            "delete_ms": 278.176794,
+            "core_ms": 693.2679909999999,
+            "process_ms": 763.289771,
+            "iteration": 2,
+            "position": 1
+          },
+          {
+            "folders": 25,
+            "bytes": 22118400,
+            "scan_ms": 349.695857,
+            "delete_ms": 314.46099,
+            "core_ms": 664.156847,
+            "process_ms": 734.843026,
+            "iteration": 3,
+            "position": 0
+          },
+          {
+            "folders": 25,
+            "bytes": 22118400,
+            "scan_ms": 503.1481360000001,
+            "delete_ms": 325.828179,
+            "core_ms": 828.976315,
+            "process_ms": 901.13382,
+            "iteration": 4,
+            "position": 1
+          },
+          {
+            "folders": 25,
+            "bytes": 22118400,
+            "scan_ms": 372.481133,
+            "delete_ms": 374.354362,
+            "core_ms": 746.835495,
+            "process_ms": 811.665481,
+            "iteration": 5,
+            "position": 0
+          },
+          {
+            "folders": 25,
+            "bytes": 22118400,
+            "scan_ms": 429.978468,
+            "delete_ms": 351.161218,
+            "core_ms": 781.1396860000001,
+            "process_ms": 847.358801,
+            "iteration": 6,
+            "position": 1
+          },
+          {
+            "folders": 25,
+            "bytes": 22118400,
+            "scan_ms": 430.761715,
+            "delete_ms": 407.06270600000005,
+            "core_ms": 837.824421,
+            "process_ms": 899.582536,
+            "iteration": 7,
+            "position": 0
+          }
+        ]
+      },
+      "warmups": {
+        "rust": [
+          {
+            "folders": 25,
+            "bytes": 22118400,
+            "scan_ms": 21.450487,
+            "delete_ms": 35.096667999999994,
+            "core_ms": 56.547155000000004,
+            "process_ms": 58.163368,
+            "iteration": 0,
+            "position": 0
+          }
+        ],
+        "javascript": [
+          {
+            "folders": 25,
+            "bytes": 22118400,
+            "scan_ms": 414.26004800000004,
+            "delete_ms": 357.812228,
+            "core_ms": 772.072276,
+            "process_ms": 842.239047,
+            "iteration": 0,
+            "position": 1
+          }
+        ]
+      },
+      "summary": {
+        "rust": {
+          "scan_ms": {
+            "median": 13.222026,
+            "mean": 13.340601571428572,
+            "stdev": 0.40882316457316775,
+            "min": 12.905702999999999,
+            "max": 14.032459000000001
+          },
+          "delete_ms": {
+            "median": 39.268046,
+            "mean": 43.12155414285714,
+            "stdev": 11.554329027409139,
+            "min": 33.876819000000005,
+            "max": 67.793489
+          },
+          "core_ms": {
+            "median": 53.300505,
+            "mean": 56.462155714285714,
+            "stdev": 11.631290422872686,
+            "min": 47.487517,
+            "max": 81.321593
+          },
+          "process_ms": {
+            "median": 55.084005,
+            "mean": 58.087645,
+            "stdev": 11.701348313171666,
+            "min": 48.883455,
+            "max": 82.777544
+          }
+        },
+        "javascript": {
+          "scan_ms": {
+            "median": 429.978468,
+            "mean": 422.0224235714286,
+            "stdev": 50.685644514264744,
+            "min": 349.695857,
+            "max": 503.1481360000001
+          },
+          "delete_ms": {
+            "median": 351.161218,
+            "mean": 352.32619642857145,
+            "stdev": 50.124465261555635,
+            "min": 278.176794,
+            "max": 415.23912600000006
+          },
+          "core_ms": {
+            "median": 781.1396860000001,
+            "mean": 774.34862,
+            "stdev": 76.75530550917097,
+            "min": 664.156847,
+            "max": 868.239585
+          },
+          "process_ms": {
+            "median": 847.358801,
+            "mean": 842.5769978571428,
+            "stdev": 76.4564351534958,
+            "min": 734.843026,
+            "max": 940.16555
+          }
+        }
+      }
+    }
+  }
+}
